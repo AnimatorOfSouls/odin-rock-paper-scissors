@@ -68,5 +68,3 @@ function game() {
   }
   console.log(`FINAL SCORE\nPlayer:\t${score[0]}\nComputer:\t${score[1]}`);
 }
-
-game();
