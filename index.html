@@ -7,7 +7,18 @@
   <script src="scripts.js"></script>
 </head>
 <body>
-  <h1>How to play:</h1>
-  <p>Open up the console (press f12 on chrome) and type "game()" to start.</p>
+  <button id="rock" onclick="playRound('rock')">Rock</button>
+  <button id="paper" onclick="playRound('paper')">Paper</button>
+  <button id="scissors" onclick="playRound('scissors')">Scissors</button>
+
+  <h2>Result:</h2>
+  <p id="result">...</p>
+  <br>
+
+  <div>
+    <h1>Score</h1>
+    Computer: <p id="computer-score">0</p><br>
+    Player: <p id="player-score">0</p>
+  </div>
 </body>
 </html>

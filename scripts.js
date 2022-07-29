@@ -10,10 +10,10 @@ function getComputerChoice() {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function getResult(playerSelection, computerSelection) {
   playerSelection = playerSelection.toUpperCase();
   computerSelection = computerSelection.toUpperCase();
-
+  
   switch (playerSelection) {
     case "ROCK":
       switch (computerSelection) {
@@ -45,26 +45,54 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function playRound(playerSelection) {
+  let computerSelection = getComputerChoice();
+  let result = getResult(playerSelection, computerSelection);
+  
+  console.log(result);
+  const resultElem = document.querySelector("#result");
+  resultElem.textContent = result;
+
+  let score = 0;
+  switch (result) {
+    case "WIN":
+      console.log("You win!");
+      const playerScore = document.querySelector("#player-score");
+      score = parseInt(playerScore.textContent) + 1;
+      playerScore.textContent = score;
+      if (score == 5) alert("You win!");
+      break;
+    case "LOSE":
+      console.log("You lose :(");
+      const computerScore = document.querySelector("#computer-score");
+      score = parseInt(computerScore.textContent) + 1;
+      computerScore.textContent = score;
+      if (score == 5) alert("The computer wins!");
+      break;
+    case "DRAW":
+      console.log("Draw!");
+      break;
+  }
+}
+
 function game() {
   let score = [0,0];
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'");
-    let computerSelection = getComputerChoice();
+  let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'");
+  let computerSelection = getComputerChoice();
 
-    let result = playRound(playerSelection, computerSelection);
-    switch (result) {
-      case "WIN":
-        console.log("You win!");
-        score[0]++;
-        break;
-      case "LOSE":
-        console.log("You lose :(");
-        score[1]++;
-        break;
-      case "DRAW":
-        console.log("Draw!");
-        break;
-    }
+  let result = playRound(playerSelection, computerSelection);
+  switch (result) {
+    case "WIN":
+      console.log("You win!");
+      score[0]++;
+      break;
+    case "LOSE":
+      console.log("You lose :(");
+      score[1]++;
+      break;
+    case "DRAW":
+      console.log("Draw!");
+      break;
   }
-  console.log(`FINAL SCORE\nPlayer:\t${score[0]}\nComputer:\t${score[1]}`);
+  //console.log(`FINAL SCORE\nPlayer:\t${score[0]}\nComputer:\t${score[1]}`);
 }
