@@ -49,28 +49,24 @@ function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
   let result = getResult(playerSelection, computerSelection);
   
-  console.log(result);
   const resultElem = document.querySelector("#result");
   resultElem.textContent = result;
 
   let score = 0;
   switch (result) {
     case "WIN":
-      console.log("You win!");
       const playerScore = document.querySelector("#player-score");
       score = parseInt(playerScore.textContent) + 1;
       playerScore.textContent = score;
       if (score == 5) alert("You win!");
       break;
     case "LOSE":
-      console.log("You lose :(");
       const computerScore = document.querySelector("#computer-score");
       score = parseInt(computerScore.textContent) + 1;
       computerScore.textContent = score;
       if (score == 5) alert("The computer wins!");
       break;
     case "DRAW":
-      console.log("Draw!");
       break;
   }
 }
