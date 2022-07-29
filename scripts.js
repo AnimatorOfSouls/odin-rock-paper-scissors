@@ -74,25 +74,3 @@ function playRound(playerSelection) {
       break;
   }
 }
-
-function game() {
-  let score = [0,0];
-  let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'");
-  let computerSelection = getComputerChoice();
-
-  let result = playRound(playerSelection, computerSelection);
-  switch (result) {
-    case "WIN":
-      console.log("You win!");
-      score[0]++;
-      break;
-    case "LOSE":
-      console.log("You lose :(");
-      score[1]++;
-      break;
-    case "DRAW":
-      console.log("Draw!");
-      break;
-  }
-  //console.log(`FINAL SCORE\nPlayer:\t${score[0]}\nComputer:\t${score[1]}`);
-}
